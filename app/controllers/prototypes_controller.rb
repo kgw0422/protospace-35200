@@ -26,10 +26,8 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    if current_user.id == @prototype.user.id
-       redirect_to edit_prototype_path
-    else
-       render :index
+    unless current_user.id == @prototype.user.id
+       redirect_to root_path
     end
   end
 
